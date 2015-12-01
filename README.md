@@ -78,6 +78,11 @@ När man loggar ut från messages sida, man kan skriva följande URL igen:
 http://localhost:3000/message
 ```
 och då är man inloggad igen.
+Om man försöker med URL:
+``` 
+/static/message.db
+```
+laddas ner hela databas fil.
 
 #####Teori om autentisering och sessioner
 Autentisering, session hantering och andra förknippna funktioner är inte implementerad på korrekt sätt vilket tillåter elaka användaren kompromitera data som session token, user id, lösenord, nycklar o.s.v. [4] .
@@ -90,8 +95,16 @@ Bättre hantering av autentisering och sessioner.
 Enligt OWASP det finns två möjliga sätt:
 * Starka autentisering och sessioner hantering kontroller
   * Bemöta alla krav av ASVS [5] för hantering av autentisering och sessioner 
+  * Ha ett enkelt gränsnitt
 * Undvika XSS brister
 https://www.owasp.org/index.php/ASVS
+
+###
+##### Problem
+##### 
+#####
+#####
+
 
 
 ##Prestanda
