@@ -87,10 +87,10 @@ laddas ner hela databas fil.
 #####Teori om autentisering och sessioner
 Autentisering, session hantering och andra förknippna funktioner är inte implementerad på korrekt sätt vilket tillåter elaka användaren kompromitera data som session token, user id, lösenord, nycklar o.s.v. [4] .
 
-#####Följder som problem kan skapa
+#####Följder som autentisering och sessioner kan skapa
 Om man använder en enhet som är publikt, och en annan användare fortsätter att använda den då kan andra användare fortsätta använda applikation som inloggad användare genom att besöka http://localhost:3000/message .
 
-#####Hur problemet kan åtgärdas
+#####Hur autentisering och sessioner kan åtgärdas
 Bättre hantering av autentisering och sessioner.
 Enligt OWASP det finns två möjliga sätt:
 * Starka autentisering och sessioner hantering kontroller
@@ -99,11 +99,29 @@ Enligt OWASP det finns två möjliga sätt:
 * Undvika XSS brister
 https://www.owasp.org/index.php/ASVS
 
-###
+### Sensitive Data Exposure
 ##### Problem
-##### 
-#####
-#####
+Lösenorden i databasen är lagrade utan hashning eller encryption.
+##### Teori om Sensitive Data Exposure
+Enligt OWASP[6] känsliga data som, kreditkort nummer, user id och liknande autentiserings uppgifter behöver speciel behandling som kryptering och hasning när lagrad eller i transfer.
+##### Följder som Sensitive Data Exposure kan skapa
+Eftersom känslig data är kompromiterad, konsekvenserna är stora. Stulta autentiserings uppgifter eller kreditkort nummer ger elaka användare möjligheter för felaktigt autentisering som kan vidare orsaka ytterligare problem.
+##### Hur Sensitive Data Exposure kan åtgärdas
+Två huvud rekommenderingar är:
+* Kryptera alla känsliga data
+* Spara inte känsliga data som behövs inte sparas (sessions token, då när session förstörs).
+* 
+### Sensitive Data Exposure
+##### Problem
+Lösenorden i databasen är lagrade utan hashning eller encryption.
+##### Teori om Sensitive Data Exposure
+Enligt OWASP[6] känsliga data som, kreditkort nummer, user id och liknande autentiserings uppgifter behöver speciel behandling som kryptering och hasning när lagrad eller i transfer.
+##### Följder som Sensitive Data Exposure kan skapa
+Eftersom känslig data är kompromiterad, konsekvenserna är stora. Stulta autentiserings uppgifter eller kreditkort nummer ger elaka användare möjligheter för felaktigt autentisering som kan vidare orsaka ytterligare problem.
+##### Hur Sensitive Data Exposure kan åtgärdas
+Två huvud rekommenderingar är:
+* Kryptera alla känsliga data
+* Spara inte känsliga data som behövs inte sparas (sessions token, då när session förstörs).
 
 
 
@@ -122,3 +140,5 @@ https://www.owasp.org/index.php/ASVS
 [4] OWASP, "Top 10 2013 - A2 Broken Authentication and Session Management", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management [Hämtad: 29 november, 2015].
 
 [5] ASVS, "Application Security Verification Standard", _ASVS_, november 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/ASVS [Online].
+
+[6] OWASP, "Top 10 2013 - A6 Sensitive Data Exposure", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure [Hämtad: 29 november, 2015].
