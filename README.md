@@ -80,7 +80,7 @@ http://localhost:3000/message
 och då är man inloggad igen.
 Om man försöker med URL:
 ``` 
-/static/message.db
+http://localhost:3000/static/message.db
 ```
 laddas ner hela databas fil.
 
@@ -110,19 +110,24 @@ Eftersom känslig data är kompromiterad, konsekvenserna är stora. Stulta auten
 Två huvud rekommenderingar är:
 * Kryptera alla känsliga data
 * Spara inte känsliga data som behövs inte sparas (sessions token, då när session förstörs).
-* 
-### Sensitive Data Exposure
-##### Problem
-Lösenorden i databasen är lagrade utan hashning eller encryption.
-##### Teori om Sensitive Data Exposure
-Enligt OWASP[6] känsliga data som, kreditkort nummer, user id och liknande autentiserings uppgifter behöver speciel behandling som kryptering och hasning när lagrad eller i transfer.
-##### Följder som Sensitive Data Exposure kan skapa
-Eftersom känslig data är kompromiterad, konsekvenserna är stora. Stulta autentiserings uppgifter eller kreditkort nummer ger elaka användare möjligheter för felaktigt autentisering som kan vidare orsaka ytterligare problem.
-##### Hur Sensitive Data Exposure kan åtgärdas
-Två huvud rekommenderingar är:
-* Kryptera alla känsliga data
-* Spara inte känsliga data som behövs inte sparas (sessions token, då när session förstörs).
 
+### Insecure Direct Object References
+##### Problem
+Databas fil nås via URL och laddas ner utan några aukterisering uppgifter:
+``` 
+http://localhost:3000/static/message.db
+```
+##### Teori om Insecure Direct Object References
+Insecure Direct Object References är ett säkerhets problem när olika implementerade objekt (text fil, JSON objekt o.s.v.) kan nås via specifiskt URL eller som en referens i en formulär, och det finns inga auktoriserings förhinder på det objekt.
+##### Följder som Insecure Direct Object References kan skapa
+Användare som är inte auktoriserad att använda vissa resurser i applikation, kan nå till resurserna och använda dom på egna vilkor.
+Eftersom det är möjligt att ladda ner databas fil, alla användare kan se alla användarsnamn och lösenorden.
+##### Hur Insecure Direct Object References kan åtgärdas
+Utvecklare ska undvika ge direkta referenser till vissa objekt (JSON, text filer, databas filer o.s.v.).
+Istället, man ska använda:
+* Kontroll av access (något form av auktorisering och rättigheterna)
+* Använda indirekta objekt referenser
+[7]
 
 
 ##Prestanda
@@ -142,3 +147,5 @@ Två huvud rekommenderingar är:
 [5] ASVS, "Application Security Verification Standard", _ASVS_, november 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/ASVS [Online].
 
 [6] OWASP, "Top 10 2013 - A6 Sensitive Data Exposure", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure [Hämtad: 29 november, 2015].
+
+[7] OWASP, "Top 10 2013 - A4 Insecure Direct Object References", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References [Hämtad: 29 november, 2015].
