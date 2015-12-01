@@ -3,7 +3,7 @@
 #Messy Labbage
 
 ##Säkerhet
-#### SQL Injection
+### SQL Injection
 ##### Problem
 
 Genom att skriva:
@@ -37,7 +37,7 @@ Användare kan logga in i applikation utan att det finns registrerad användarsn
 Det är viktigt att använda parametiserade frågor mot databasen. Alternativet är att använda säkra API-er. Det är rekommenderad att använda sig av positiva eller "white list" för validering av inmatade data, men den metod löser INTE alltid problemet, eftersom vissa applikation kan kräva speciella karaktär som inmatade data.
 Finns andra preventiva metoder som kan användas. Det är rekommenderad att applikations användare har minsta möjliga rättigheter över databas som används (skriv och läs rättigheterna) och att kontrollera inmatad data som kan förhindra SQL attack. Jag kan rekommendera använda "Black list" med tecken som kan användas för sträng konkatenering.
 
-#### Cross Site Scripting (XSS) 
+### Cross Site Scripting (XSS) 
 ##### Problem
 Om användare skriver följande meddelande i fältet för meddelande:
 ``` HTML
@@ -70,7 +70,7 @@ _Escape_ alla opåligtliga data som innan det används i följande list:
   * HTML Body
 [3]
 
-####Autentisering och sessioner
+###Autentisering och sessioner
 #####Problem
 
 När man loggar ut från messages sida, man kan skriva följande URL igen:
@@ -86,6 +86,12 @@ Autentisering, session hantering och andra förknippna funktioner är inte imple
 Om man använder en enhet som är publikt, och en annan användare fortsätter att använda den då kan andra användare fortsätta använda applikation som inloggad användare genom att besöka http://localhost:3000/message .
 
 #####Hur problemet kan åtgärdas
+Bättre hantering av autentisering och sessioner.
+Enligt OWASP det finns två möjliga sätt:
+* Starka autentisering och sessioner hantering kontroller
+  * Bemöta alla krav av ASVS [5] för hantering av autentisering och sessioner 
+* Undvika XSS brister
+https://www.owasp.org/index.php/ASVS
 
 
 ##Prestanda
@@ -101,3 +107,5 @@ Om man använder en enhet som är publikt, och en annan användare fortsätter a
 [3] OWASP, "XSS Prevention cheat sheet", _OWASP_, september 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet [Online].
 
 [4] OWASP, "Top 10 2013 - A2 Broken Authentication and Session Management", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management [Hämtad: 29 november, 2015].
+
+[5] ASVS, "Application Security Verification Standard", _ASVS_, november 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/ASVS [Online].
