@@ -5,7 +5,7 @@
 ##Säkerhet
 #### SQL Injection
 
-###### SQL Injection
+##### Problem
 
 Genom att skriva:
 ```
@@ -16,6 +16,16 @@ i fältet för användarnamn inmatning och
 PASS' OR '4'='4
 ```
 i fältet för lösenord inmatning, kommer inmatade sträng att konkatenera med SQL kommand som finns i kóden och kóden efter WHERE ord i SQL query kommer att returnera true alltid (eftersom 4 är lika med 4).
+Följande linje i kod bygger en SQL query på dynamiskt sätt:
+``` javascript
+var sqlString = "SELECT * FROM user WHERE email = '" + username +"' AND password = '" + password +"'";
+```
+Efter injection attack, kommandot som ska exekvera mot databasen ska se följande ut:
+```
+SELECT * FROM user WHERE email = " dittnamn@vadsomhelst" AND password = "PASS" OR 4 = 4
+```
+Användaren loggar in utan att ange korekta uppgifter.
+
 ######Teori om SQL injection
 
 SQL Injection är ett problem som ingår i gruppen Injections. Injection brister som OS injection, SQL injection och LDAP injection skär när opålitligt data skickas till interpretör (till exempel SQL Server) som en del av query eller command [1].
