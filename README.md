@@ -58,6 +58,16 @@ Det kan hända att elak användare kommer åt innehållet av användare _kakor_ 
 Viktigt är att validera och göra _escape_ på alla opålitliga data. Enligt OWASP Prevention cheat sheet [3] alla XXS attack kan inte blockeras av _escape_ eftersom vissa javascript funktioner kan inte använda opåligtlig data utan att vara under risk av XSS.
 Användning av "White list" är rekommenderad, men löser inte ALLA problem.
 _Escape_ alla opåligtliga data som innan det används i följande list:
+* String
+  * HTML Body
+  * Säker HTML attributer
+  * GET parameter
+  * Opålitlig URL i href eller src attribut
+  * CSS value
+  * Jacascript variable
+  * DOM XSS
+* HTML
+  * HTML Body
 
 
 
