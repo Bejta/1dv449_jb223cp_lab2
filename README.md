@@ -26,16 +26,17 @@ SELECT * FROM user WHERE email = " dittnamn@vadsomhelst" AND password = "PASS" O
 ```
 Användaren loggar in utan att ange korekta uppgifter.
 
-######Teori om SQL injection
+#####Teori om SQL injection
 
 SQL Injection är ett problem som ingår i gruppen Injections. Injection brister som OS injection, SQL injection och LDAP injection skär när opålitligt data skickas till interpretör (till exempel SQL Server) som en del av query eller command [1].
 
-######Följder som problem kan skapa
+#####Följder som problem kan skapa
 Användare kan logga in i applikation utan att det finns registrerad användarsnamn och lösenord. Förutom det tydliga problem, elak användare kan injectera elak kod till SQL kommand och exekvera mer komplexa och mer kritiska commando på databasen. Det går att få en lista över alla användare. Det är möjligt att radera hela tabell och exekvera DROP kommand på hela databas.
 
-######Hur problemet kan åtgärdas
+#####Hur problemet kan åtgärdas
 
 Det är viktigt att använda parametiserade frågor mot databasen. Alternativet är att använda säkra API-er. Det är rekommenderad att använda sig av positiva eller "white list" för validering av inmatade data, men den metod löser INTE alltid problemet, eftersom vissa applikation kan kräva speciella karaktär som inmatade data.
+Finns andra preventiva metoder som kan användas. Det är rekommenderad att applikation användare har minska möjliga rättigheter över databas som används (skriv och läs rättigheterna) och att kontrollera inmatad data som kan förhindra SQL attack. Jag kan rekommendera använda "Black list" med tecken som kan användas för sträng konkatenering.
 
 ####Problem 2
 
