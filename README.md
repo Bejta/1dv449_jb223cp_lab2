@@ -68,16 +68,25 @@ _Escape_ alla opåligtliga data som innan det används i följande list:
   * DOM XSS
 * HTML
   * HTML Body
+[3]
 
+####Autentisering och sessioner
+#####Problem
 
+När man loggar ut från messages sida, man kan skriva följande URL igen:
+``` 
+http://localhost:3000/message
+```
+och då är man inloggad igen.
 
-####Problem 3
+#####Teori om autentisering och sessioner
+Autentisering, session hantering och andra förknippna funktioner är inte implementerad på korrekt sätt vilket tillåter elaka användaren kompromitera data som session token, user id, lösenord, nycklar o.s.v. [4] .
 
-######Teori om problem 3
+#####Följder som problem kan skapa
+Om man använder en enhet som är publikt, och en annan användare fortsätter att använda den då kan andra användare fortsätta använda applikation som inloggad användare genom att besöka http://localhost:3000/message .
 
-######Följder som problem kan skapa
+#####Hur problemet kan åtgärdas
 
-######Hur problemet kan åtgärdas
 
 ##Prestanda
 
@@ -90,3 +99,5 @@ _Escape_ alla opåligtliga data som innan det används i följande list:
 [2] OWASP, "Top 10 2013 - A3 Cross-Site Scripting (XSS)", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS) [Hämtad: 29 november, 2015].
 
 [3] OWASP, "XSS Prevention cheat sheet", _OWASP_, september 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet [Online].
+
+[4] OWASP, "Top 10 2013 - A2 Broken Authentication and Session Management", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A2-Broken_Authentication_and_Session_Management [Hämtad: 29 november, 2015].
