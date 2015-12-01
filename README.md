@@ -48,8 +48,6 @@ Med följande enkel inmatning vi kan skriva en länk bland andra meddelanden, oc
 ``` HTML
 <a href="http://www.webbprogrammerare.se">See your message</a>
 ```
-Med 
-
 ##### Teori om Cross Site Scripting (XSS) 
 Enligt OWASP [2] topp 10 säkerhets problem från 2013, XSS brist sker då när opålitligt data skickas till webb läsaren utan validering eller _escape_ . På detta sättet elak användare kan exekvera skripter i användares webbläsare eller manipulera webbläsare genom att göra _redirect_ till en annan sida som kan exekvera elak kód. [2]
 
@@ -60,6 +58,7 @@ Det kan hända att elak användare kommer åt innehållet av användare _kakor_ 
 Viktigt är att validera och göra _escape_ på alla opålitliga data. Enligt OWASP Prevention cheat sheet [3] alla XXS attack kan inte blockeras av _escape_ eftersom vissa javascript funktioner kan inte använda opåligtlig data utan att vara under risk av XSS.
 Användning av "White list" är rekommenderad, men löser inte ALLA problem.
 _Escape_ alla opåligtliga data som innan det används i följande list:
+
 
 
 ####Problem 3
@@ -77,5 +76,7 @@ _Escape_ alla opåligtliga data som innan det används i följande list:
 #####Referencer:
 
 [1] OWASP, "Top 10 2013 - A1 Injection", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A1-Injection [Hämtad: 29 november, 2015].
+
 [2] OWASP, "Top 10 2013 - A3 Cross-Site Scripting (XSS)", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A3-Cross-Site_Scripting_(XSS) [Hämtad: 29 november, 2015].
+
 [3] OWASP, "XSS Prevention cheat sheet", _OWASP_, september 2015 [Online] Tillgänglig: https://www.owasp.org/index.php/XSS_(Cross_Site_Scripting)_Prevention_Cheat_Sheet [Online].
