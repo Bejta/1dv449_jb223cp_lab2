@@ -98,7 +98,7 @@ https://www.owasp.org/index.php/ASVS
 
 ##Reflektioner
 
-#####Referencer:
+#####Referenser:
 
 [1] OWASP, "Top 10 2013 - A1 Injection", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A1-Injection [Hämtad: 29 november, 2015].
 
