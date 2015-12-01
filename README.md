@@ -21,7 +21,7 @@ Följande linje i kod bygger en SQL query på dynamiskt sätt:
 var sqlString = "SELECT * FROM user WHERE email = '" + username +"' AND password = '" + password +"'";
 ```
 Efter injection attack, kommandot som ska exekvera mot databasen ska se följande ut:
-```
+``` SQL
 SELECT * FROM user WHERE email = " dittnamn@vadsomhelst" AND password = "PASS" OR 4 = 4
 ```
 Användaren loggar in utan att ange korekta uppgifter.
@@ -36,7 +36,7 @@ Användare kan logga in i applikation utan att det finns registrerad användarsn
 #####Hur  SQL Injection kan åtgärdas
 
 Det är viktigt att använda parametiserade frågor mot databasen. Alternativet är att använda säkra API-er. Det är rekommenderad att använda sig av positiva eller "white list" för validering av inmatade data, men den metod löser INTE alltid problemet, eftersom vissa applikation kan kräva speciella karaktär som inmatade data.
-Finns andra preventiva metoder som kan användas. Det är rekommenderad att applikation användare har minska möjliga rättigheter över databas som används (skriv och läs rättigheterna) och att kontrollera inmatad data som kan förhindra SQL attack. Jag kan rekommendera använda "Black list" med tecken som kan användas för sträng konkatenering.
+Finns andra preventiva metoder som kan användas. Det är rekommenderad att applikations användare har minsta möjliga rättigheter över databas som används (skriv och läs rättigheterna) och att kontrollera inmatad data som kan förhindra SQL attack. Jag kan rekommendera använda "Black list" med tecken som kan användas för sträng konkatenering.
 
 #### Cross Site Scripting (XSS) 
 
@@ -45,9 +45,9 @@ Finns andra preventiva metoder som kan användas. Det är rekommenderad att appl
 
 
 
-######Följder som Cross Site Scripting (XSS) kan skapa
+#####Följder som Cross Site Scripting (XSS) kan skapa
 
-######Hur Cross Site Scripting (XSS) kan åtgärdas
+#####Hur Cross Site Scripting (XSS) kan åtgärdas
 
 ####Problem 3
 
