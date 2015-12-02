@@ -131,6 +131,22 @@ Istället, man ska använda:
 
 
 ##Prestanda
+### Inline CSS och Javascript
+#####Problem
+I applikation messy labbage CSS och Javascript är implementerade direkt i HTML filer. Det gör att applikation har bättre prestanda (lite bättre) första gång applikation körs av en användare. Långsiktiga resultat ger sämre prestanda. 
+#####Teori om Inline CSS och Javascript
+Enligt Steve Sounders, JavaScript och CSS filer ska separeras i separata filer. Sådana filer blir cashade och det påverkar prestanda positivt. [8]
+#####Hur Inline CSS och Javascript åtgärdas
+Skriv CSS och Javascript i separata filer och ange referens i HTML fil.
+
+### Put scripts at the bottom 
+#####Problem
+I applikation messy labbage  Javascript filer Sessage.js och MessageBoard.js är implementerade i början av HTML filer.
+Dem filer ska länkas in efter </body> tagg.
+#####Teori om Put scripts at the bottom
+Enligt Steve Sounders, JavaScript  filer ska länkas in efter </body> tagg. Detta tillåter HTML randera innan skript. I andra fall skript kan inflytta prestanda negativt, genom att rendering av HTML väntar till skript slutar sin exekvering. [9]
+#####Hur Put scripts at the bottom åtgärdas
+Placera JavaScript länkar efter </body> tagg.
 
 ##Reflektioner
 
@@ -149,3 +165,7 @@ Istället, man ska använda:
 [6] OWASP, "Top 10 2013 - A6 Sensitive Data Exposure", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A6-Sensitive_Data_Exposure [Online].
 
 [7] OWASP, "Top 10 2013 - A4 Insecure Direct Object References", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References [Online].
+
+[8] Steve Sounders, "High Performance Web Sites - Rule 8: Make JavaScript and CSS External", O'Reilly, september 2007
+
+[9] Steve Sounders, "High Performance Web Sites - Rule 6: Put Scripts at the Bottom", O'Reilly, september 2007
