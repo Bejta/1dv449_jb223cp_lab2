@@ -6,7 +6,7 @@
 ##### _Laboration 2 - Webbteknik 2_
 ##### _Linnéuniversitetet, Webbprogrammerare 2014_
 
-##Säkerhet
+##Säkerhetsproblem
 ### SQL Injection
 ##### Problem
 
