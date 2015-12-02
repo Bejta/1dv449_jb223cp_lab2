@@ -154,6 +154,9 @@ Placera JavaScript länkar efter </body> tagg.
 
 ##Reflektioner
 
+I min säkerhetsproblem analys använde jag mig av OWASP list över topp 10 största säkerhetsproblem från 2013. Mina slutsatser är att applikation messy labbage innehåller oväntade många säkerhetsproblem. Enligt mig, vissa säkerhetsproblem ingår i flera kateogier. Vissa av problem kan utnyttjas genom att kombinera flera säkerhetsproblem. Utifrån säkerhets perspektiv applikationen Messy Labbage är absolut inte godkänd för att på något sätt användas som färdigt produkt.
+Prestanda är tillräckligt bra, men finns mycket plats för förbättringar. Applikation är ganska enkelt och liten, och skillnader i prestanda är säkert inte stora (om applikationen skulle blivit utvecklad med rekommenderade metoder för förbättrad prestanda), men finns tydliga brister och punkter när implementering bryter mot rekommenderade utvecklings metoder.
+
 #####Referenser:
 
 [1] OWASP, "Top 10 2013 - A1 Injection", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A1-Injection [Online].
