@@ -2,9 +2,9 @@
 
 #Messy Labbage
 ##Analys av säkerhetsproblem och prestanda
-#### _Jasmin Bejtovic - jb223cp_
-#### _Laboration 2 - Webbtekning 2_
-#### _Linnéuniversitetet, Webbprogrammerare 2014_
+##### _Jasmin Bejtovic JB223CP_
+##### _Laboration 2 - Webbteknik 2_
+##### _Linnéuniversitetet, Webbprogrammerare 2014_
 
 ##Säkerhet
 ### SQL Injection
