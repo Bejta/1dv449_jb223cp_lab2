@@ -18,12 +18,11 @@ i fältet för användarnamn inmatning och
 ```
 PASS' OR '4'='4
 ```
-i fältet för lösenord inmatning, kommer inmatade sträng att konkatenera med SQL kommand som finns i kóden och kóden efter WHERE ord i SQL query kommer att returnera true alltid (eftersom 4 är lika med 4).
-Följande linje i kod bygger en SQL query på dynamiskt sätt:
+i fältet för lösenord inmatning, kommer inmatade sträng att konkatenera med SQL kommand som finns i koden och koden efter WHERE ord i SQL query kommer att alltid returnera true  (eftersom 4 är lika med 4). Följande linje i koden bygger en SQL query på dynamiskt sätt:
 ``` javascript
 var sqlString = "SELECT * FROM user WHERE email = '" + username +"' AND password = '" + password +"'";
 ```
-Efter injection attack, kommandot som ska exekvera mot databasen ska se följande ut:
+Efter injection attacken, kommandot som ska exekvera mot databasen ska se ut som följande:
 ``` SQL
 SELECT * FROM user WHERE email = " dittnamn@vadsomhelst" AND password = "PASS" OR 4 = 4
 ```
