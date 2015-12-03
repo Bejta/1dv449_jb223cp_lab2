@@ -150,7 +150,7 @@ Dem filer ska länkas in efter </body> tagg.
 #####Teori om Put scripts at the bottom
 Enligt Steve Sounders, JavaScript  filer ska länkas in efter </body> tagg. Detta tillåter HTML randera innan skript. I andra fall skript kan inflytta prestanda negativt, genom att rendering av HTML väntar till skript slutar sin exekvering. [9]
 #####Hur Put scripts at the bottom åtgärdas
-Placera JavaScript länkar efter </body> tagg.
+Placera JavaScript länkar efter body tagg.
 
 ##Reflektioner
 
