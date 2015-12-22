@@ -125,13 +125,21 @@ Utvecklare ska undvika att ge direkta referenser till vissa objekt (JSON, text f
 * Använda indirekta objekt referenser [7]
 [7]
 
+###Cross-Site Request Forgery (CSRF)
+#####Problem
+Formulär för meddelande saknar _token_ .
+#####Teori om Cross-Site Request Forgery (CSRF)
+CSRF-attack är metod att lura användare ladda eller posta information till applikation i vilken är användare inloggad [8] .
+##### Hur Cross-Site Request Forgery (CSRF) åtgärdas
+Man kan förhindra CRSF attack genom att använda _token_  i form av en session, som kan få ett nytt värde varje gång sidan laddas om. På så sätt kan vi se om det handlar om riktigt request. Andra möjliga sätt är att kräva om-autentisering av användare, eller vi kan göma token i URLen. 
+
 
 ##Prestanda
 ### Inline CSS och Javascript
 #####Problem
 I applikation messy labbage är CSS och Javascript implementerade direkt i HTML filer. Det gör att applikationen har bättre prestanda (lite bättre) första gång applikation körs av en användare. Långsiktiga resultat ger sämre prestanda.
 #####Teori om Inline CSS och Javascript
-Enligt Steve Sounders, ska JavaScript och CSS filer separeras i separata filer. Sådana filer blir cashade och det påverkar prestanda positivt. [8]
+Enligt Steve Sounders, ska JavaScript och CSS filer separeras i separata filer. Sådana filer blir cashade och det påverkar prestanda positivt. [9]
 #####Hur Inline CSS och Javascript åtgärdas
 Skriv CSS och Javascript i separata filer och ange referens i HTML fil.
 
@@ -139,7 +147,7 @@ Skriv CSS och Javascript i separata filer och ange referens i HTML fil.
 #####Problem
 I applikation messy labbage är Javascript filer Sessage.js och MessageBoard.js implementerade i början av HTML filer. De filer ska länkas in efter _body_ tagg.
 #####Teori om Put scripts at the bottom
-Enligt Steve Sounders, ska JavaScript filer länkas in efter tagg. Detta tillåter HTML rendera innan skript. I andra fall kan script påverka prestanda negativt, genom att rendering av HTML väntar till skript slutar sin exekvering. [9]
+Enligt Steve Sounders, ska JavaScript filer länkas in efter tagg. Detta tillåter HTML rendera innan skript. I andra fall kan script påverka prestanda negativt, genom att rendering av HTML väntar till skript slutar sin exekvering. [10]
 #####Hur Put scripts at the bottom åtgärdas
 Placera JavaScript länkar efter _body_ tagg.
 ###Använda Cache-headers
@@ -148,7 +156,7 @@ Expiration header har värde -1 vilket betyder att ingenting spara i cache fil. 
 Vissa filer laddas utan att dem används senare och det finns några 404 anrop mot några filer som inte finns (se bild).
 ![failed](https://cloud.githubusercontent.com/assets/8629282/11962668/cb8ebff6-a8e1-11e5-83e5-06efd399d735.png)
 #####Teori om Cache-headers
-Webbläsare använder cache att reducera antal HTTP Requests och minska storlek av HTTP Response. Det hjälper webbplatser ladda snabbare. [10]
+Webbläsare använder cache att reducera antal HTTP Requests och minska storlek av HTTP Response. Det hjälper webbplatser ladda snabbare. [11]
 #####Hur Cache headers problem återgärdas
 Genom att förändra Expire värde till passande max-age förhindrar vi att resurserna laddas om varje gång.
 ###Komprimering av resurser
@@ -159,14 +167,14 @@ Front end inginörer kan betydligt reducera tiden som behövs att olika resurser
 ```
 mod_gzip_minimum_file_size [11]
 ```
-avgör minimalt storlek av filer som ska komprimeras. Default värde är 500 bytes
+avgör minimalt storlek av filer som ska komprimeras. Default värde är 500 bytes [12]
 #####Hur komprimering av resurser återgärdas
 Komprimera alla externa filer, CSS och Javascript.
 ###Minifiering
 #####Problem
 Javascript och CSS filerna är förstora och det går att reducera deras storlek genom att eliminera onödiga tecken in filerna.
 #####Teori om Minifiering
-Minifiering är praktik av radering onödiga tecken från kod, vilket gör koden mindre i storlek och förbättrar laddnings tid av koden. [12] .
+Minifiering är praktik av radering onödiga tecken från kod, vilket gör koden mindre i storlek och förbättrar laddnings tid av koden. [13] .
 Minifierad kod är kod med raderade kommentarer, tom utrymme (new line, tab).
 #####Förbättring
 GZip komprimering reducerar filerna till 70%, och kombinerad med minifiering resultatet kan bli förbättrad för yterligare 20%.
@@ -192,12 +200,14 @@ I min analys kring säkerhetsproblem använde jag mig av OWASP list över topp 1
 
 [7] OWASP, "Top 10 2013 - A4 Insecure Direct Object References", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A4-Insecure_Direct_Object_References [Online].
 
-[8] Steve Sounders, "High Performance Web Sites - Rule 8: Make JavaScript and CSS External", O'Reilly, september 2007
+[8] OWASP, "Top 10 2013 - A8 Cross-Site Request Forgery (CSRF)", _OWASP_, juni 2013 [Online] Tillgänglig: https://www.owasp.org/index.php/Top_10_2013-A8-Cross-Site_Request_Forgery_(CSRF) [Online].
 
-[9] Steve Sounders, "High Performance Web Sites - Rule 6: Put Scripts at the Bottom", O'Reilly, september 2007
+[9] Steve Sounders, "High Performance Web Sites - Rule 8: Make JavaScript and CSS External", O'Reilly, september 2007
 
-[10] Steve Sounders, "High Performance Web Sites - Rule 3: Add an Expires Header", O'Reilly, september 2007
+[10] Steve Sounders, "High Performance Web Sites - Rule 6: Put Scripts at the Bottom", O'Reilly, september 2007
 
-[11] Steve Sounders, "High Performance Web Sites - Rule 4: Gzip Components", O'Reilly, september 2007
+[11] Steve Sounders, "High Performance Web Sites - Rule 3: Add an Expires Header", O'Reilly, september 2007
 
-[12] Steve Sounders, "High Performance Web Sites - Rule 10: Minify JavaScript", O'Reilly, september 2007
+[12] Steve Sounders, "High Performance Web Sites - Rule 4: Gzip Components", O'Reilly, september 2007
+
+[13] Steve Sounders, "High Performance Web Sites - Rule 10: Minify JavaScript", O'Reilly, september 2007
