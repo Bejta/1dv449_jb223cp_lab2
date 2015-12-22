@@ -162,6 +162,15 @@ mod_gzip_minimum_file_size [11]
 avgör minimalt storlek av filer som ska komprimeras. Default värde är 500 bytes
 #####Hur komprimering av resurser återgärdas
 Komprimera alla externa filer, CSS och Javascript.
+###Minifiering
+#####Problem
+Javascript och CSS filerna är förstora och det går att reducera deras storlek genom att eliminera onödiga tecken in filerna.
+#####Teori om Minifiering
+Minifiering är praktik av radering onödiga tecken från kod, vilket gör koden mindre i storlek och förbättrar laddnings tid av koden. [12] .
+Minifierad kod är kod med raderade kommentarer, tom utrymme (new line, tab).
+#####Förbättring
+GZip komprimering reducerar filerna till 70%, och kombinerad med minifiering resultatet kan bli förbättrad för yterligare 20%.
+
 
 ##Reflektioner
 
@@ -190,3 +199,5 @@ I min analys kring säkerhetsproblem använde jag mig av OWASP list över topp 1
 [10] Steve Sounders, "High Performance Web Sites - Rule 3: Add an Expires Header", O'Reilly, september 2007
 
 [11] Steve Sounders, "High Performance Web Sites - Rule 4: Gzip Components", O'Reilly, september 2007
+
+[12] Steve Sounders, "High Performance Web Sites - Rule 10: Minify JavaScript", O'Reilly, september 2007
