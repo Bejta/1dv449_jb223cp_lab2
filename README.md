@@ -151,6 +151,17 @@ Vissa filer laddas utan att dem används senare och det finns några 404 anrop m
 Webbläsare använder cache att reducera antal HTTP Requests och minska storlek av HTTP Response. Det hjälper webbplatser ladda snabbare. [10]
 #####Hur Cache headers problem återgärdas
 Genom att förändra Expire värde till passande max-age förhindrar vi att resurserna laddas om varje gång.
+###Komprimering av resurser
+#####Problem
+Inga resurser som används av applikationen är komprimerad. Det gör HTTP Response större i storlek och konsekvensen är att applikationen laddas långsamare.
+#####Teori om komprimering av resurser
+Front end inginörer kan betydligt reducera tiden som behövs att olika resurser laddas (förkorta transfer tid) genom att göra HTTP Request och HTTP Response med mindre storlek av paket. GZip är för tillfället mest populär och mest effektivt komprimering metod. Generellt är bra att komprimera alla filer större än 1k eller 2k. Direktiv 
+```
+mod_gzip_minimum_file_size [11]
+```
+avgör minimalt storlek av filer som ska komprimeras. Default värde är 500 bytes
+#####Hur komprimering av resurser återgärdas
+Komprimera alla externa filer, CSS och Javascript.
 
 ##Reflektioner
 
@@ -177,3 +188,5 @@ I min analys kring säkerhetsproblem använde jag mig av OWASP list över topp 1
 [9] Steve Sounders, "High Performance Web Sites - Rule 6: Put Scripts at the Bottom", O'Reilly, september 2007
 
 [10] Steve Sounders, "High Performance Web Sites - Rule 3: Add an Expires Header", O'Reilly, september 2007
+
+[11] Steve Sounders, "High Performance Web Sites - Rule 4: Gzip Components", O'Reilly, september 2007
