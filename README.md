@@ -142,6 +142,15 @@ I applikation messy labbage är Javascript filer Sessage.js och MessageBoard.js 
 Enligt Steve Sounders, ska JavaScript filer länkas in efter tagg. Detta tillåter HTML rendera innan skript. I andra fall kan script påverka prestanda negativt, genom att rendering av HTML väntar till skript slutar sin exekvering. [9]
 #####Hur Put scripts at the bottom åtgärdas
 Placera JavaScript länkar efter _body_ tagg.
+###Möjlighten att använda Cache-headers
+#####Problem
+Expiration header har värde -1 vilket betyder att ingenting spara i cache fil. Allt ladas om vid varje ny POST eller GET.
+Vissa filer laddas utan att dem används senare och det finns några 404 anrop mot några filer som inte finns (se bild).
+
+#####Teori om möjligheten att använda Cache-headers
+Webbläsare använder cache att reducera antal av HTTP Requests och minska storlek av HTTP Response. Det hjälper webbplatser ladda snabbare. [10]
+#####Hur Cache headers problem återgärdas
+Genom att förändra Expire värde till passande max-age förhindrar vi att resurserna laddas om varje gång.
 
 ##Reflektioner
 
@@ -166,3 +175,5 @@ I min analys kring säkerhetsproblem använde jag mig av OWASP list över topp 1
 [8] Steve Sounders, "High Performance Web Sites - Rule 8: Make JavaScript and CSS External", O'Reilly, september 2007
 
 [9] Steve Sounders, "High Performance Web Sites - Rule 6: Put Scripts at the Bottom", O'Reilly, september 2007
+
+[10] Steve Sounders, "High Performance Web Sites - Rule 3: Add an Expires Header", O'Reilly, september 2007
