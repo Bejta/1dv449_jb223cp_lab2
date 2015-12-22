@@ -146,7 +146,7 @@ Placera JavaScript länkar efter _body_ tagg.
 #####Problem
 Expiration header har värde -1 vilket betyder att ingenting spara i cache fil. Allt ladas om vid varje ny POST eller GET.
 Vissa filer laddas utan att dem används senare och det finns några 404 anrop mot några filer som inte finns (se bild).
-
+![failed](https://cloud.githubusercontent.com/assets/8629282/11962668/cb8ebff6-a8e1-11e5-83e5-06efd399d735.png)
 #####Teori om möjligheten att använda Cache-headers
 Webbläsare använder cache att reducera antal av HTTP Requests och minska storlek av HTTP Response. Det hjälper webbplatser ladda snabbare. [10]
 #####Hur Cache headers problem återgärdas
